@@ -129,8 +129,15 @@ const Customers = () => {
   };
 
   const formSubmitHandler = async (data) => {
-    const response = await updateAddress(data);
-    console.log(await response);
+    try {
+      const response = await updateAddress(data);
+      if (response.status !== 200) {
+        throw new Error("Something went wrong!");
+      }
+      callCustomerHandler();
+    } catch (error) {
+      alert(`${error}`);
+    }
   };
 
   const addNewAddressHandler = async (data) => {
