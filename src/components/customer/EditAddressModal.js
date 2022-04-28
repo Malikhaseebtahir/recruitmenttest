@@ -65,6 +65,9 @@ const EditAddressModal = ({ address, onSubmit, onClose, onDelete }) => {
       County: addressValue.County,
       Description: addressValue.Description,
       ContactTitle: addressValue.ContactTitle,
+      ProvinceId: addressValue.ProvinceId,
+      CountryId: addressValue.CountryId,
+      CityId: addressValue.CityId,
     };
 
     onSubmit(updatedForm);
