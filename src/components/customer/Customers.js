@@ -106,6 +106,10 @@ const Customers = () => {
     setShowNewAddressModal((prevState) => !prevState);
   };
 
+  const toggleEditAddressModalHandler = () => {
+    setShowEditAddressModal((prevState) => !prevState);
+  };
+
   const addressClickHandler = async (addressId) => {
     try {
       const response = await getCustomerAddress(addressId);
@@ -124,11 +128,7 @@ const Customers = () => {
     }
   };
 
-  const toggleEditAddressModalHandler = () => {
-    setShowEditAddressModal((prevState) => !prevState);
-  };
-
-  const formSubmitHandler = async (data) => {
+  const updateAddressSubmitHandler = async (data) => {
     try {
       const response = await updateAddress(data);
       if (response.status !== 200) {
@@ -156,21 +156,20 @@ const Customers = () => {
 
     // eslint-disable-next-line no-restricted-globals
     if (confirm("Do you want to add this to customer address")) {
-      const response = await updateCustomerAddress(updatedAddress);
-      if (response.status !== 200) {
-        throw new Error("Something went wrong!");
+      try {
+        const response = await updateCustomerAddress(updatedAddress);
+        if (response.status !== 200) {
+          throw new Error("Something went wrong!");
+        }
+
+        getAllCustomerHandler();
+      } catch (error) {
+        alert(error);
       }
-
-      const {
-        data: { Response: addedAddress },
-      } = await response;
-
-      getAllCustomerHandler();
     }
   };
 
   const deleteCustomerAddress = async (addressId) => {
-    console.log(addressId);
     const filteredAddress = customerAddresses.find(
       (address) => address.AddressId === addressId
     );
@@ -230,7 +229,7 @@ const Customers = () => {
       {showEditAddressModal && (
         <EditAddressModal
           address={editableAddress}
-          onSubmit={formSubmitHandler}
+          onSubmit={updateAddressSubmitHandler}
           onClose={toggleEditAddressModalHandler}
           onDelete={deleteCustomerAddress}
         />
