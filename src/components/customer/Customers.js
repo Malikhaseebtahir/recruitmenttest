@@ -1,20 +1,82 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 
 import { getCustomerAddresses } from "../../services/customerService";
 import {
   getCustomerAddress,
   updateAddress,
+  addAddress,
+  getCountries,
+  getCities,
+  getProvinces,
 } from "../../services/addressService";
 import classes from "./Customer.module.css";
 import EditAddressModal from "./EditAddressModal";
 import NewAddressModal from "./NewAddressModal/NewAddressModal";
 
 const Customers = () => {
-  const [customerAddresses, setCustomerAddresses] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [cities, setCities] = useState([]);
+  const [provinces, setProvinces] = useState([]);
+  const [countries, setCountries] = useState([]);
+  const [customerAddresses, setCustomerAddresses] = useState([]);
   const [editableAddress, setEditableAddress] = useState({});
   const [showEditAddressModal, setShowEditAddressModal] = useState(false);
   const [showNewAddressModal, setShowNewAddressModal] = useState(false);
+
+  const getAllCities = useCallback(async () => {
+    try {
+      const response = await getCities();
+      if (response.status !== 200) {
+        throw new Error("Something went wrong");
+      }
+
+      const {
+        data: { Response: cities },
+      } = await response;
+
+      setCities(cities);
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
+  const getAllProvinces = useCallback(async () => {
+    try {
+      const response = await getProvinces();
+      if (response.status !== 200) {
+        throw new Error("Something went wrong");
+      }
+
+      const {
+        data: { Response: provinces },
+      } = response;
+      setProvinces(provinces);
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
+  const getAllCountries = useCallback(async () => {
+    try {
+      const response = await getCountries();
+      if (response.status !== 200) {
+        throw new Error("Something went wrong");
+      }
+
+      const {
+        data: { Response: countries },
+      } = response;
+      setCountries(countries);
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
+  useEffect(() => {
+    getAllCities();
+    getAllProvinces();
+    getAllCountries();
+  }, [getAllCities, getAllCountries, getAllProvinces]);
 
   const callCustomerHandler = async () => {
     setIsLoading(true);
@@ -68,7 +130,13 @@ const Customers = () => {
     updateAddress(data);
   };
 
-  const addNewAddressHandler = (data) => {};
+  const addNewAddressHandler = async (data) => {
+    console.log(data);
+    setShowNewAddressModal((prevState) => !prevState);
+
+    const response = await addAddress(data);
+    console.log("Response -> ", response);
+  };
 
   return (
     <>
@@ -116,6 +184,9 @@ const Customers = () => {
 
       {showNewAddressModal && (
         <NewAddressModal
+          countries={countries}
+          cities={cities}
+          provinces={provinces}
           onSubmit={addNewAddressHandler}
           onClose={toggleNewAddressModalHandler}
         />

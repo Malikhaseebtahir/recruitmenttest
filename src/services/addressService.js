@@ -18,3 +18,15 @@ export function getCustomerAddress(addressId) {
 export function updateAddress(data) {
   return http.put(apiEndpoint + "update", data);
 }
+
+export function getCountries() {
+  return http.post(apiEndpoint + "Country/Search", {});
+}
+
+export function getProvinces() {
+  return http.post(apiEndpoint + "Province/Search", {});
+}
+
+export function getCities() {
+  return http.post(apiEndpoint + "City/Search", {});
+}

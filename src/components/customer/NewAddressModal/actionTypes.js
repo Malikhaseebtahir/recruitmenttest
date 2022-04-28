@@ -1,0 +1,10 @@
+export const TITLE_CHANGED = "titleChanged";
+export const COUNTY_CHANGED = "countyChanged";
+export const ADDRESS_LINE1_CHANGED = "addressLine1Changed";
+export const ADDRESS_LINE2_CHANGED = "addressLine2Changed";
+export const POSTAL_CODE_CHANGED = "postalCodeChanged";
+export const DESCRIPTION_CHANGED = "descriptionChanged";
+export const CONTACT_TITLE_CHANGED = "contactTitleChanged";
+export const COUNTRY_CHANGED = "countryChanged";
+export const PROVINCE_CHANGED = "provinceChanged";
+export const CITY_CHANGED = "cityChanged";
