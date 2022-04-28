@@ -40,7 +40,7 @@ const Customers = () => {
 
       setCities(cities);
     } catch (error) {
-      console.log(error);
+      alert(error);
     }
   }, []);
 
@@ -56,7 +56,7 @@ const Customers = () => {
       } = response;
       setProvinces(provinces);
     } catch (error) {
-      console.log(error);
+      alert(error);
     }
   }, []);
 
@@ -72,7 +72,7 @@ const Customers = () => {
       } = response;
       setCountries(countries);
     } catch (error) {
-      console.log(error);
+      alert(error);
     }
   }, []);
 
@@ -97,7 +97,7 @@ const Customers = () => {
       setCustomerAddresses(allAddresses);
       setIsLoading(false);
     } catch (error) {
-      console.log(error);
+      alert(error);
     }
     setIsLoading(false);
   };

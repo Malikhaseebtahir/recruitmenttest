@@ -30,7 +30,7 @@ const Profile = () => {
 
       setProfile(userProfile);
     } catch (error) {
-      console.log("error");
+      alert(error);
     }
 
     setIsLoading(false);
