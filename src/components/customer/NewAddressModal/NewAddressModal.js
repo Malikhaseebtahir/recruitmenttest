@@ -3,6 +3,7 @@ import React, { useReducer } from "react";
 import Modal from "../../UI/Modal";
 import * as actionType from "./actionTypes";
 import { reducer, initialState } from "./reducer";
+import AppButton from "../../UI/AppButton";
 
 const NewAddressModal = ({
   countries,
@@ -105,6 +106,7 @@ const NewAddressModal = ({
           <label>Title</label>
           <input className="form-control" onChange={titleChangeHandler} />
         </div>
+
         <div className="form-group">
           <label>Country</label>
           <select className="form-control" onChange={countryChangedHandler}>
@@ -114,6 +116,7 @@ const NewAddressModal = ({
             ))}
           </select>
         </div>
+
         <div className="form-group">
           <label>Province</label>
           <select className="form-control" onChange={provinceChangedHandler}>
@@ -123,6 +126,7 @@ const NewAddressModal = ({
             ))}
           </select>
         </div>
+
         <div className="form-group">
           <label>City</label>
           <select className="form-control" onChange={cityChangedHandler}>
@@ -132,10 +136,12 @@ const NewAddressModal = ({
             ))}
           </select>
         </div>
+
         <div className="form-group">
           <label>Country</label>
           <input className="form-control" onChange={countyChangedHandler} />
         </div>
+
         <div className="form-group">
           <label>AddressLine1</label>
           <input
@@ -143,6 +149,7 @@ const NewAddressModal = ({
             onChange={addressLineOneChangeHandler}
           />
         </div>
+
         <div className="form-group">
           <label>AddressLine2</label>
           <input
@@ -150,14 +157,17 @@ const NewAddressModal = ({
             onChange={addressLineTwoChangeHandler}
           />
         </div>
+
         <div className="form-group">
           <label>Postal Code</label>
           <input className="form-control" onChange={postalCodeChangeHandler} />
         </div>
+
         <div className="form-group">
           <label>Description</label>
           <input className="form-control" onChange={descriptionChangeHandler} />
         </div>
+
         <div className="form-group">
           <label>Contact Title</label>
           <input
@@ -165,11 +175,15 @@ const NewAddressModal = ({
             onChange={contactTitleChangeHandler}
           />
         </div>
+
         <div>
-          <button className="btn btn-primary">Save</button>
-          <button onClick={onClose} className="btn btn-default ml-4">
-            Cancel
-          </button>
+          <AppButton classes={"btn btn-primary"} type="Submit" text="Save" />
+
+          <AppButton
+            classes={"btn btn-default ml-4"}
+            onClick={onClose}
+            text="Cancel"
+          />
         </div>
       </form>
     </Modal>

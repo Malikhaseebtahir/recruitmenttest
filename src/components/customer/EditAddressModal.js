@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import AppButton from "../UI/AppButton";
 import Modal from "../UI/Modal";
 
 const EditAddressModal = ({ address, onSubmit, onClose, onDelete }) => {
@@ -134,6 +135,7 @@ const EditAddressModal = ({ address, onSubmit, onClose, onDelete }) => {
               onChange={descriptionChangeHandler}
             />
           </div>
+
           <div className="form-group">
             <label>Contact Title</label>
             <input
@@ -142,18 +144,25 @@ const EditAddressModal = ({ address, onSubmit, onClose, onDelete }) => {
               onChange={contactTitleChangeHandler}
             />
           </div>
+
           <div>
-            <button className="btn btn-primary">Update</button>
-            <button onClick={onClose} className="btn btn-default ml-3">
-              Cancel
-            </button>
-            <button
-              type="button"
+            <AppButton
+              classes={"btn btn-primary"}
+              type="Submit"
+              text="Update"
+            />
+
+            <AppButton
+              classes={"btn btn-default ml-3"}
+              onClick={onClose}
+              text="Cancel"
+            />
+
+            <AppButton
+              classes={"btn btn-danger ml-3"}
               onClick={deleteHandler}
-              className="btn btn-danger ml-3"
-            >
-              Delete
-            </button>
+              text="Delete"
+            />
           </div>
         </form>
       </div>

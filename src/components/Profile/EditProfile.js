@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import Modal from "../UI/Modal";
+import AppButton from "../UI/AppButton";
 
 const EditProfile = ({ profile, onFormSubmit, onCloseModal }) => {
   const [profileValues, setProfileValues] = useState(profile);
@@ -59,6 +60,7 @@ const EditProfile = ({ profile, onFormSubmit, onCloseModal }) => {
             onChange={firstNameChangeHandler}
           />
         </div>
+
         <div className="form-group">
           <label>LastName</label>
           <input
@@ -67,6 +69,7 @@ const EditProfile = ({ profile, onFormSubmit, onCloseModal }) => {
             onChange={lastNameChangeHandler}
           />
         </div>
+
         <div className="form-group">
           <label>Avatar</label>
           <input
@@ -75,6 +78,7 @@ const EditProfile = ({ profile, onFormSubmit, onCloseModal }) => {
             onChange={avatarNameChangeHandler}
           />
         </div>
+
         <div className="form-group">
           <label>Culture</label>
           <input
@@ -83,10 +87,15 @@ const EditProfile = ({ profile, onFormSubmit, onCloseModal }) => {
             onChange={cultureNameChangeHandler}
           />
         </div>
-        <button className="btn btn-primary">Submit</button>
-        <button className="btn btn-default ml-2" onClick={onCloseModal}>
-          Cancel
-        </button>
+
+        <div>
+          <AppButton classes={"btn btn-primary"} type="Submit" text="Submit" />
+          <AppButton
+            classes={"btn btn-default ml-2"}
+            onClick={onCloseModal}
+            text="Cancel"
+          />
+        </div>
       </form>
     </Modal>
   );

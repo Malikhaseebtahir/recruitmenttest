@@ -18,6 +18,7 @@ import EditAddressModal from "./EditAddressModal";
 import NewAddressModal from "./NewAddressModal/NewAddressModal";
 import Loading from "../UI/Loading";
 import CustomerAddressContainer from "./CustomerAddressContainer";
+import AppButton from "../UI/AppButton";
 
 const Customers = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -194,15 +195,17 @@ const Customers = () => {
 
   return (
     <>
-      <button className="btn btn-primary mt-5" onClick={getAllCustomerHandler}>
-        Get All Customer Addresses.
-      </button>
-      <button
-        className="btn btn-primary mt-5 ml-5"
+      <AppButton
+        classes={"btn btn-primary mt-5"}
+        onClick={getAllCustomerHandler}
+        text="Get All Customer Addresses"
+      />
+
+      <AppButton
+        classes={"btn btn-primary mt-5 ml-5"}
         onClick={toggleNewAddressModalHandler}
-      >
-        Add new Address
-      </button>
+        text={"Add new Address"}
+      />
 
       {!isLoading &&
         customerAddresses.map((address) => (
