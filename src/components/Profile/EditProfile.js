@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import Modal from "../UI/Modal";
 import AppButton from "../UI/AppButton";
+import FormInputLabel from "../UI/FormInputLabel";
 
 const EditProfile = ({ profile, onFormSubmit, onCloseModal }) => {
   const [profileValues, setProfileValues] = useState(profile);
@@ -52,41 +53,29 @@ const EditProfile = ({ profile, onFormSubmit, onCloseModal }) => {
     <Modal>
       <h4>Edit Profile</h4>
       <form onSubmit={submitHandler}>
-        <div className="form-group">
-          <label>FirstName</label>
-          <input
-            className="form-control"
-            value={profileValues.FirstName}
-            onChange={firstNameChangeHandler}
-          />
-        </div>
+        <FormInputLabel
+          label="FirstName"
+          value={profileValues.FirstName}
+          onChange={firstNameChangeHandler}
+        />
 
-        <div className="form-group">
-          <label>LastName</label>
-          <input
-            className="form-control"
-            value={profileValues.LastName}
-            onChange={lastNameChangeHandler}
-          />
-        </div>
+        <FormInputLabel
+          label="LastName"
+          value={profileValues.LastName}
+          onChange={lastNameChangeHandler}
+        />
 
-        <div className="form-group">
-          <label>Avatar</label>
-          <input
-            className="form-control"
-            value={profileValues.Avatar || ""}
-            onChange={avatarNameChangeHandler}
-          />
-        </div>
+        <FormInputLabel
+          label="Avatar"
+          value={profileValues.Avatar}
+          onChange={avatarNameChangeHandler}
+        />
 
-        <div className="form-group">
-          <label>Culture</label>
-          <input
-            className="form-control"
-            value={profileValues.Culture || ""}
-            onChange={cultureNameChangeHandler}
-          />
-        </div>
+        <FormInputLabel
+          label="Culture"
+          value={profileValues.Culture}
+          onChange={cultureNameChangeHandler}
+        />
 
         <div>
           <AppButton classes={"btn btn-primary"} type="Submit" text="Submit" />
