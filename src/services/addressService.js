@@ -16,7 +16,7 @@ export function getCustomerAddress(addressId) {
 }
 
 export function updateAddress(data) {
-  return http.put(apiEndpoint + "update", data);
+  return http.post(apiEndpoint + "update", data);
 }
 
 export function getCountries() {
