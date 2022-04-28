@@ -17,6 +17,7 @@ import classes from "./Customer.module.css";
 import EditAddressModal from "./EditAddressModal";
 import NewAddressModal from "./NewAddressModal/NewAddressModal";
 import Loading from "../UI/Loading";
+import CustomerAddressContainer from "./CustomerAddressContainer";
 
 const Customers = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -202,19 +203,14 @@ const Customers = () => {
       >
         Add new Address
       </button>
+
       {!isLoading &&
         customerAddresses.map((address) => (
-          <div
+          <CustomerAddressContainer
             key={address.Id}
-            onClick={() => addressClickHandler(address.AddressId)}
-            className={classes.address}
-          >
-            {address.Address !== null && address.Address !== "" ? (
-              <p className={classes.addressContainer}>{address.Address}</p>
-            ) : (
-              <p className={classes.noAddressContainer}>No address</p>
-            )}
-          </div>
+            address={address}
+            onClick={addressClickHandler}
+          />
         ))}
 
       {isLoading && <Loading />}
