@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Joi, { Err } from "joi-browser";
 
 import {
   getIdentityUser,
@@ -16,14 +15,6 @@ const Profile = () => {
   useEffect(() => {
     getUser();
   }, []);
-
-  // const schema = {
-  //   id: Joi.string(),
-  //   FirstName: Joi.string().required().label("FirstName"),
-  //   LastName: Joi.string().required().label("LastName"),
-  //   Avatar: Joi.string().required().label("Avatar"),
-  //   Culture: Joi.string().required().label("Culture"),
-  // };
 
   const getUser = async () => {
     setIsLoading(true);
