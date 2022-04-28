@@ -1,6 +1,10 @@
 import React, { useState, useEffect, useCallback } from "react";
 
-import { getCustomerAddresses } from "../../services/customerService";
+import {
+  deleteCustomerAddress as deleteAddress,
+  getCustomerAddresses,
+  updateCustomerAddress,
+} from "../../services/customerService";
 import {
   getCustomerAddress,
   updateAddress,
@@ -131,11 +135,53 @@ const Customers = () => {
   };
 
   const addNewAddressHandler = async (data) => {
-    console.log(data);
     setShowNewAddressModal((prevState) => !prevState);
 
     const response = await addAddress(data);
-    console.log("Response -> ", response);
+    const {
+      data: { Response: newAddress },
+    } = await response;
+
+    const updatedAddress = {
+      customerId: "c49279da-e134-434a-b097-08da187bfb61",
+      AddressId: newAddress.Id,
+      Address: newAddress.AddressLine2,
+    };
+
+    // eslint-disable-next-line no-restricted-globals
+    if (confirm("Do you want to add this to customer address")) {
+      const response = await updateCustomerAddress(updatedAddress);
+      if (response.status !== 200) {
+        throw new Error("Something went wrong!");
+      }
+
+      const {
+        data: { Response: addedAddress },
+      } = await response;
+      console.log("addedAddress -> ", addedAddress);
+    }
+  };
+
+  const deleteCustomerAddress = async (addressId) => {
+    console.log(addressId);
+    const filteredAddress = customerAddresses.find(
+      (address) => address.AddressId === addressId
+    );
+    const deleteObj = {
+      Id: filteredAddress.Id,
+      CustomerId: filteredAddress.CustomerId,
+    };
+
+    const response = await deleteAddress(deleteObj);
+
+    if (response.status === 200) {
+      const { data } = await response;
+      const newCustomerAddress = customerAddresses.filter(
+        (address) => address.AddressId !== data.Response.AddressId
+      );
+      setCustomerAddresses(newCustomerAddress);
+    }
+    toggleModalHandler();
   };
 
   return (
@@ -178,7 +224,8 @@ const Customers = () => {
         <EditAddressModal
           address={editableAddress}
           onSubmit={formSubmitHandler}
-          onCloseModal={toggleModalHandler}
+          onClose={toggleModalHandler}
+          onDelete={deleteCustomerAddress}
         />
       )}
 

@@ -17,6 +17,14 @@ export function getCustomerAddresses(data) {
   return http.post(apiEndpoint + "address/search", {});
 }
 
+export function updateCustomerAddress(data) {
+  return http.post(apiEndpoint + "address/add", data);
+}
+
+export function deleteCustomerAddress(data) {
+  return http.post(apiEndpoint + "address/delete", data);
+}
+
 // export function getMovie(movieId) {
 //   return http.get(movieUrl(movieId));
 // }

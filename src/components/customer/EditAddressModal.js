@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Modal from "../UI/Modal";
 
-const EditAddressModal = ({ address, onCloseModal, onSubmit }) => {
+const EditAddressModal = ({ address, onSubmit, onClose, onDelete }) => {
   const [addressValue, setAddressValue] = useState(address);
 
   const addressLineOneChangeHandler = (event) => {
@@ -68,7 +68,14 @@ const EditAddressModal = ({ address, onCloseModal, onSubmit }) => {
     };
 
     onSubmit(updatedForm);
-    onCloseModal();
+    onClose();
+  };
+
+  const deleteHandler = () => {
+    // eslint-disable-next-line no-restricted-globals
+    if (confirm("Are you sure you want to delete this address")) {
+      onDelete(addressValue.Id);
+    }
   };
 
   return (
@@ -134,8 +141,15 @@ const EditAddressModal = ({ address, onCloseModal, onSubmit }) => {
           </div>
           <div>
             <button className="btn btn-primary">Update</button>
-            <button onClick={onCloseModal} className="btn btn-default ml-3">
+            <button onClick={onClose} className="btn btn-default ml-3">
               Cancel
+            </button>
+            <button
+              type="button"
+              onClick={deleteHandler}
+              className="btn btn-danger ml-3"
+            >
+              Delete
             </button>
           </div>
         </form>
