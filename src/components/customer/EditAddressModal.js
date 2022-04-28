@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import AppButton from "../UI/AppButton";
+import FormInputLabel from "../UI/FormInputLabel";
 import Modal from "../UI/Modal";
 
 const EditAddressModal = ({ address, onSubmit, onClose, onDelete }) => {
@@ -87,63 +88,47 @@ const EditAddressModal = ({ address, onSubmit, onClose, onDelete }) => {
       <p>{address.Address}</p>
       <div>
         <form onSubmit={formSubmitHandler}>
-          <div className="form-group">
-            <label>AddressLine 1</label>
-            <input
-              className="form-control"
-              value={addressValue.AddressLine1}
-              onChange={addressLineOneChangeHandler}
-            />
-          </div>
-          <div className="form-group">
-            <label>AddressLine 2</label>
-            <input
-              className="form-control"
-              value={addressValue.AddressLine2}
-              onChange={addressLineTwoChangeHandler}
-            />
-          </div>
-          <div className="form-group">
-            <label>Postal Code</label>
-            <input
-              className="form-control"
-              value={addressValue.PostalCode}
-              onChange={postalCodeChangeHandler}
-            />
-          </div>
-          <div className="form-group">
-            <label>Title</label>
-            <input
-              className="form-control"
-              value={addressValue.Title}
-              onChange={titleChangeHandler}
-            />
-          </div>
-          <div className="form-group">
-            <label>County</label>
-            <input
-              className="form-control"
-              value={addressValue.County}
-              onChange={countyChangeHandler}
-            />
-          </div>
-          <div className="form-group">
-            <label>Description</label>
-            <input
-              className="form-control"
-              value={addressValue.Description}
-              onChange={descriptionChangeHandler}
-            />
-          </div>
+          <FormInputLabel
+            label="AddressLine 1"
+            value={addressValue.AddressLine1}
+            onChange={addressLineOneChangeHandler}
+          />
 
-          <div className="form-group">
-            <label>Contact Title</label>
-            <input
-              className="form-control"
-              value={addressValue.ContactTitle}
-              onChange={contactTitleChangeHandler}
-            />
-          </div>
+          <FormInputLabel
+            label="AddressLine 2"
+            value={addressValue.AddressLine2}
+            onChange={addressLineTwoChangeHandler}
+          />
+
+          <FormInputLabel
+            label="Postal Code"
+            value={addressValue.PostalCode}
+            onChange={postalCodeChangeHandler}
+          />
+
+          <FormInputLabel
+            label="Title"
+            value={addressValue.Title}
+            onChange={titleChangeHandler}
+          />
+
+          <FormInputLabel
+            label="County"
+            value={addressValue.County}
+            onChange={countyChangeHandler}
+          />
+
+          <FormInputLabel
+            label="Description"
+            value={addressValue.Description}
+            onChange={descriptionChangeHandler}
+          />
+
+          <FormInputLabel
+            label="Contact Title"
+            value={addressValue.ContactTitle}
+            onChange={contactTitleChangeHandler}
+          />
 
           <div>
             <AppButton
