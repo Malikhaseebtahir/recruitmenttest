@@ -82,7 +82,7 @@ const Customers = () => {
     getAllCountries();
   }, [getAllCities, getAllCountries, getAllProvinces]);
 
-  const callCustomerHandler = async () => {
+  const getAllCustomerHandler = async () => {
     setIsLoading(true);
     try {
       const response = await getCustomerAddresses();
@@ -134,7 +134,7 @@ const Customers = () => {
       if (response.status !== 200) {
         throw new Error("Something went wrong!");
       }
-      callCustomerHandler();
+      getAllCustomerHandler();
     } catch (error) {
       alert(`${error}`);
     }
@@ -165,7 +165,7 @@ const Customers = () => {
         data: { Response: addedAddress },
       } = await response;
 
-      callCustomerHandler();
+      getAllCustomerHandler();
     }
   };
 
@@ -193,7 +193,7 @@ const Customers = () => {
 
   return (
     <>
-      <button className="btn btn-primary mt-5" onClick={callCustomerHandler}>
+      <button className="btn btn-primary mt-5" onClick={getAllCustomerHandler}>
         Get All Customer Addresses.
       </button>
       <button
