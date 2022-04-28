@@ -16,6 +16,7 @@ import {
 import classes from "./Customer.module.css";
 import EditAddressModal from "./EditAddressModal";
 import NewAddressModal from "./NewAddressModal/NewAddressModal";
+import Loading from "../UI/Loading";
 
 const Customers = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -216,7 +217,9 @@ const Customers = () => {
           </div>
         ))}
 
-      {isLoading && <p className={classes.isLoadingText}>Loading...</p>}
+      {isLoading && <Loading />}
+
+      {/* {isLoading && <p className={classes.isLoadingText}>Loading...</p>} */}
 
       {showEditAddressModal && (
         <EditAddressModal
