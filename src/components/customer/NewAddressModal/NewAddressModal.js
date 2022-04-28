@@ -1,9 +1,10 @@
 import React, { useReducer } from "react";
 
 import Modal from "../../UI/Modal";
+import AppButton from "../../UI/AppButton";
 import * as actionType from "./actionTypes";
 import { reducer, initialState } from "./reducer";
-import AppButton from "../../UI/AppButton";
+import FormInputLabel from "../../UI/FormInputLabel";
 
 const NewAddressModal = ({
   countries,
@@ -102,10 +103,7 @@ const NewAddressModal = ({
   return (
     <Modal>
       <form onSubmit={submitHandler}>
-        <div className="form-group">
-          <label>Title</label>
-          <input className="form-control" onChange={titleChangeHandler} />
-        </div>
+        <FormInputLabel label="Title" onChange={titleChangeHandler} />
 
         <div className="form-group">
           <label>Country</label>
@@ -137,44 +135,32 @@ const NewAddressModal = ({
           </select>
         </div>
 
-        <div className="form-group">
-          <label>Country</label>
-          <input className="form-control" onChange={countyChangedHandler} />
-        </div>
+        <FormInputLabel label="County" onChange={countyChangedHandler} />
 
-        <div className="form-group">
-          <label>AddressLine1</label>
-          <input
-            className="form-control"
-            onChange={addressLineOneChangeHandler}
-          />
-        </div>
+        <FormInputLabel
+          label="AddressLine1"
+          onChange={addressLineOneChangeHandler}
+        />
 
-        <div className="form-group">
-          <label>AddressLine2</label>
-          <input
-            className="form-control"
-            onChange={addressLineTwoChangeHandler}
-          />
-        </div>
+        <FormInputLabel
+          label="AddressLine2"
+          onChange={addressLineTwoChangeHandler}
+        />
 
-        <div className="form-group">
-          <label>Postal Code</label>
-          <input className="form-control" onChange={postalCodeChangeHandler} />
-        </div>
+        <FormInputLabel
+          label="Postal Code"
+          onChange={postalCodeChangeHandler}
+        />
 
-        <div className="form-group">
-          <label>Description</label>
-          <input className="form-control" onChange={descriptionChangeHandler} />
-        </div>
+        <FormInputLabel
+          label="Description"
+          onChange={descriptionChangeHandler}
+        />
 
-        <div className="form-group">
-          <label>Contact Title</label>
-          <input
-            className="form-control"
-            onChange={contactTitleChangeHandler}
-          />
-        </div>
+        <FormInputLabel
+          label="Contact Title"
+          onChange={contactTitleChangeHandler}
+        />
 
         <div>
           <AppButton classes={"btn btn-primary"} type="Submit" text="Save" />

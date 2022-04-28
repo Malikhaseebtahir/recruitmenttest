@@ -1,10 +1,14 @@
 import React from "react";
 
-const FormInputLabel = ({ label, value, onChange }) => {
+const FormInputLabel = ({ label, value = "", onChange }) => {
   return (
     <div className="form-group">
       <label>{label}</label>
-      <input className="form-control" value={value} onChange={onChange} />
+      {value !== "" ? (
+        <input className="form-control" value={value} onChange={onChange} />
+      ) : (
+        <input className="form-control" onChange={onChange} />
+      )}
     </div>
   );
 };
