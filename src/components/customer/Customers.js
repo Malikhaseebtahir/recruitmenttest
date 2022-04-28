@@ -164,6 +164,8 @@ const Customers = () => {
       const {
         data: { Response: addedAddress },
       } = await response;
+
+      callCustomerHandler();
     }
   };
 
@@ -207,7 +209,7 @@ const Customers = () => {
             onClick={() => addressClickHandler(address.AddressId)}
             className={classes.address}
           >
-            {address.Address !== null ? (
+            {address.Address !== null && address.Address !== "" ? (
               <p style={{ display: "inline-block", marginTop: "9px" }}>
                 {address.Address}
               </p>
