@@ -1,0 +1,10 @@
+.loadingLabel {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.loginContainer {
+  margin-top: 5rem;
+  margin-left: 1rem;
+}

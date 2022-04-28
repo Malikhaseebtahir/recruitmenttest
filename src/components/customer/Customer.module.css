@@ -1,0 +1,9 @@
+.address {
+  padding: 0.2rem;
+  background: #8f732f;
+  margin-top: 1rem;
+  border-radius: 10px;
+  max-width: 45rem;
+  cursor: pointer;
+  text-align: center;
+}
