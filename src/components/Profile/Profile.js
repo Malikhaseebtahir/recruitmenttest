@@ -7,6 +7,7 @@ import {
 import classes from "./Profile.module.css";
 import EditProfile from "./EditProfile";
 import Loading from "../UI/Loading";
+import ProfileDetailsCard from "./ProfileDetailsCard";
 
 const Profile = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -67,43 +68,10 @@ const Profile = () => {
         <h4 className={classes.heading}>User details</h4>
         {isLoading && <Loading />}
         {!isLoading && (
-          <div>
-            <div>
-              <label className={classes.label}>FirstName: </label>
-              <span className={classes["label-value"]}>
-                {profile.FirstName}
-              </span>
-            </div>
-            <div>
-              <label className={classes.label}>LastName: </label>
-              <span className={classes["label-value"]}>{profile.LastName}</span>
-            </div>
-            <div>
-              <label className={classes.label}>Email: </label>
-              <span className={classes["label-value"]}>{profile.Email}</span>
-            </div>
-            {profile.Phone && (
-              <div>
-                <label className={classes.label}>Phone: </label>
-                <span className={classes["label-value"]}>{profile.Phone}</span>
-              </div>
-            )}
-            {profile.Avatar && (
-              <div>
-                <label className={classes.label}>Avatar</label>
-                <span className={classes["label-value"]}>{profile.Avatar}</span>
-              </div>
-            )}
-            <button
-              type="button"
-              className={`btn btn-primary ${classes.editButton}`}
-              onClick={toggleModalHandler}
-            >
-              Edit
-            </button>
-          </div>
+          <ProfileDetailsCard profile={profile} onClick={toggleModalHandler} />
         )}
       </div>
+
       {showModal && (
         <EditProfile
           profile={profile}
