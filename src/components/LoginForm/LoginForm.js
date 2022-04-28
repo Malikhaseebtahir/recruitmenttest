@@ -5,6 +5,7 @@ import Joi from "joi-browser";
 import auth from "../../services/authService";
 import classes from "./LoginForm.module.css";
 import Form from "./../UI/Form";
+import Loading from "../UI/Loading";
 
 class LoginForm extends Form {
   state = {
@@ -46,10 +47,7 @@ class LoginForm extends Form {
         <form onSubmit={this.handleSubmit}>
           {this.renderInput("username", "Username")}
           {this.renderInput("password", "Password", "password")}
-          {this.renderButton("Login")}{" "}
-          {this.state.isLoading && (
-            <p className={classes.loadingLabel}>Loading....</p>
-          )}
+          {this.renderButton("Login")} {this.state.isLoading && <Loading />}
         </form>
       </div>
     );

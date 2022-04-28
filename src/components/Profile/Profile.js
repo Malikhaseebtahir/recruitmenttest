@@ -6,6 +6,7 @@ import {
 } from "../../services/identityService";
 import classes from "./Profile.module.css";
 import EditProfile from "./EditProfile";
+import Loading from "../UI/Loading";
 
 const Profile = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -64,7 +65,7 @@ const Profile = () => {
     <>
       <div className={classes.profileContainer}>
         <h4 className={classes.heading}>User details</h4>
-        {isLoading && <p>Loading...</p>}
+        {isLoading && <Loading />}
         {!isLoading && (
           <div>
             <div>
