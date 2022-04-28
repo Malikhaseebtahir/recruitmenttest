@@ -118,18 +118,19 @@ const Customers = () => {
       } = await response;
 
       setEditableAddress(newAddress);
-      toggleModalHandler();
+      toggleEditAddressModalHandler();
     } catch (error) {
       alert(`${error}. Error while retrieving the address.`);
     }
   };
 
-  const toggleModalHandler = () => {
+  const toggleEditAddressModalHandler = () => {
     setShowEditAddressModal((prevState) => !prevState);
   };
 
-  const formSubmitHandler = (data) => {
-    updateAddress(data);
+  const formSubmitHandler = async (data) => {
+    const response = await updateAddress(data);
+    console.log(await response);
   };
 
   const addNewAddressHandler = async (data) => {
@@ -178,7 +179,7 @@ const Customers = () => {
       );
       setCustomerAddresses(newCustomerAddress);
     }
-    toggleModalHandler();
+    toggleEditAddressModalHandler();
   };
 
   return (
@@ -195,7 +196,7 @@ const Customers = () => {
       {!isLoading &&
         customerAddresses.map((address) => (
           <div
-            key={address.AddressId}
+            key={address.Id}
             onClick={() => addressClickHandler(address.AddressId)}
             className={classes.address}
           >
@@ -221,7 +222,7 @@ const Customers = () => {
         <EditAddressModal
           address={editableAddress}
           onSubmit={formSubmitHandler}
-          onClose={toggleModalHandler}
+          onClose={toggleEditAddressModalHandler}
           onDelete={deleteCustomerAddress}
         />
       )}

@@ -17,7 +17,6 @@ function App() {
 
   useEffect(() => {
     setUser(auth.getCurrentUser());
-    console.log(auth.getCurrentUser());
   }, []);
 
   return (
