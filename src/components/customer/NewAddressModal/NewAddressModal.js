@@ -90,7 +90,6 @@ const NewAddressModal = ({
 
   const cityChangedHandler = (event) => {
     const cityName = event.target.value;
-    console.log(cityName);
     const city = cities.find((c) => c.Name === cityName);
 
     dispatch({

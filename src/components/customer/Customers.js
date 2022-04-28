@@ -94,11 +94,10 @@ const Customers = () => {
       const {
         data: { Response: allAddresses },
       } = await response;
-      console.log(allAddresses);
       setCustomerAddresses(allAddresses);
       setIsLoading(false);
     } catch (error) {
-      console.log(typeof error);
+      console.log(error);
     }
     setIsLoading(false);
   };
@@ -118,7 +117,6 @@ const Customers = () => {
         data: { Response: newAddress },
       } = await response;
 
-      console.log(newAddress);
       setEditableAddress(newAddress);
       toggleModalHandler();
     } catch (error) {
@@ -158,7 +156,6 @@ const Customers = () => {
       const {
         data: { Response: addedAddress },
       } = await response;
-      console.log("addedAddress -> ", addedAddress);
     }
   };
 

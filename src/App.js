@@ -36,9 +36,7 @@ function App() {
             render={(props) => <Customers {...props} />}
           />
           <Route path="/profile" component={Profile} />
-          {/* <Route path="/not-found" component={NotFound} /> */}
           <Redirect from="/" exact to="/customers" />
-          {/* <Redirect to="/not-found" /> */}
         </Switch>
       </main>
     </React.Fragment>
