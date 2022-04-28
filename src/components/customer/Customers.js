@@ -219,8 +219,6 @@ const Customers = () => {
 
       {isLoading && <Loading />}
 
-      {/* {isLoading && <p className={classes.isLoadingText}>Loading...</p>} */}
-
       {showEditAddressModal && (
         <EditAddressModal
           address={editableAddress}
