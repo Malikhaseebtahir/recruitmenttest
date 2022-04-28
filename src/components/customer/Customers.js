@@ -209,22 +209,14 @@ const Customers = () => {
             className={classes.address}
           >
             {address.Address !== null && address.Address !== "" ? (
-              <p style={{ display: "inline-block", marginTop: "9px" }}>
-                {address.Address}
-              </p>
+              <p className={classes.addressContainer}>{address.Address}</p>
             ) : (
-              <p style={{ color: "red", marginTop: "9px" }}>No address</p>
+              <p className={classes.noAddressContainer}>No address</p>
             )}
           </div>
         ))}
 
-      {isLoading && (
-        <p
-          style={{ textAlign: "center", fontSize: "2rem", fontWeight: "bold" }}
-        >
-          Loading...
-        </p>
-      )}
+      {isLoading && <p className={classes.isLoadingText}>Loading...</p>}
 
       {showEditAddressModal && (
         <EditAddressModal

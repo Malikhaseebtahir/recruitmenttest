@@ -7,3 +7,19 @@
   cursor: pointer;
   text-align: center;
 }
+
+.addressContainer {
+  display: inline-block;
+  margin-top: 9px;
+}
+
+.noAddressContainer {
+  color: red;
+  margin-top: 9px;
+}
+
+.isLoadingText {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+}
